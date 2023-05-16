@@ -13,9 +13,10 @@ const MyOrders = () => {
                 authorization : `Bearer ${localStorage.getItem("user-token")}`
             }
         })
-        .then(res=>res.json)
+        .then(res=>res.json())
         .then(data=>setOrder(data))
-    })
+    },[])
+    console.log(order);
     return (
         <section>
 
