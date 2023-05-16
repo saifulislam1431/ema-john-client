@@ -7,8 +7,8 @@
 @tailwind utilities;
 
 .active{
-@apply text-secondary font-semibold bg-transparent
+@apply text-primary font-bold bg-transparent
 }
 .default{
-  @apply text-white font-medium bg-transparent
+  @apply text-secondary lg:text-white font-medium bg-transparent
 }
