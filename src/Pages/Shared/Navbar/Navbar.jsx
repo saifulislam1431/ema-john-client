@@ -2,9 +2,26 @@ import React, { useContext } from 'react';
 import { UserContext } from '../../../Auth/Auth';
 import { Link, NavLink } from 'react-router-dom';
 import logo from "../../../assets/images/Logo.svg"
+import { FaSignOutAlt, FaSignInAlt } from "react-icons/fa";
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
-  const { user } = useContext(UserContext)
+  const { user,logOut } = useContext(UserContext)
+
+  const handleLogOut =()=>{
+    logOut()
+    .then(()=>{
+      Swal.fire({
+          title: 'Success!',
+          text: 'Log Out Successful',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+        })
+  })
+  .catch(error=>{
+      console.log(error);
+  })
+  }
   const navItems = <>
     <li>
       <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "default")}>Home</NavLink>
@@ -21,11 +38,11 @@ const Navbar = () => {
 
     {
       user ? <li>
-        <button className="bg-transparent active">Sign Out</button>
+        <button className="bg-transparent active" onClick={handleLogOut}>Sign Out <FaSignOutAlt className='active'/></button>
       </li>
         :
         <li>
-          <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "default")}>Sign In</NavLink>
+          <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "default")}>Sign In <FaSignInAlt /></NavLink>
         </li>
     }
 
