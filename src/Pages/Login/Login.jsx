@@ -20,7 +20,31 @@ const Login = () => {
             console.log(logedUser);
             Swal.fire({
                 title: 'Success!',
-                text: 'Registration Successful',
+                text: 'Login Successful',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+              navigate("/")
+
+        })
+        .catch(error=>{
+            Swal.fire({
+                title: 'Error!',
+                text: error.message,
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
+        })
+    }
+
+    const handleGoogle =()=>{
+        googleLog()
+        .then(res=>{
+            const logedUser = res.user;
+            console.log(logedUser);
+            Swal.fire({
+                title: 'Success!',
+                text: 'Login Successful',
                 icon: 'success',
                 confirmButtonText: 'Cool'
               })
@@ -57,7 +81,7 @@ const Login = () => {
 
         </form>
        <div className='text-center'>
-       <button className='border py-2 rounded-md font-semibold inline-flex text-center items-center justify-center gap-2 w-80'><img src={icon} alt="Google" className='w-7'/> Continue with Google</button>
+       <button className='border py-2 rounded-md font-semibold inline-flex text-center items-center justify-center gap-2 w-80' onClick={handleGoogle}><img src={icon} alt="Google" className='w-7'/> Continue with Google</button>
        </div>
         </div>
 

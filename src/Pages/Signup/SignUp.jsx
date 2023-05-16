@@ -47,6 +47,30 @@ if(password !== ConfirmPassword){
     }
 
 
+    const handleGoogle =()=>{
+        googleLog()
+        .then(res=>{
+            const logedUser = res.user;
+            console.log(logedUser);
+            Swal.fire({
+                title: 'Success!',
+                text: 'Login Successful',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+              navigate("/")
+
+        })
+        .catch(error=>{
+            Swal.fire({
+                title: 'Error!',
+                text: error.message,
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
+        })
+    }
+
     return (
         <section className='flex items-center justify-center min-h-[calc(100vh-100px)]'> 
 <div className='bg-secondary bg-opacity-40 rounded-md'>
@@ -70,7 +94,9 @@ if(password !== ConfirmPassword){
             <div className="divider">or</div>
 
         </form>
-        <button className='border py-2 rounded-md font-semibold inline-flex text-center items-center justify-center gap-2 w-80'><img src={icon} alt="Google" className='w-7'/> Continue with Google</button>
+      <div>
+      <button className='border py-2 rounded-md font-semibold inline-flex text-center items-center justify-center gap-2 w-80' onClick={handleGoogle}><img src={icon} alt="Google" className='w-7'/> Continue with Google</button>
+      </div>
         </div>
 
     </div>
