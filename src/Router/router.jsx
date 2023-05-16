@@ -7,6 +7,7 @@ import MyOrders from '../Pages/MyOrders/MyOrders';
 import OrderReview from '../Pages/OrderReview/OrderReview';
 import Login from '../Pages/Login/Login';
 import SignUp from '../Pages/Signup/Signup';
+import PrivateRoute from './PrivateRoute';
 
 const router = createBrowserRouter([
     {
@@ -24,11 +25,11 @@ const router = createBrowserRouter([
         },
         {
           path:"cart",
-          element:<MyOrders></MyOrders>
+          element:<PrivateRoute><MyOrders></MyOrders></PrivateRoute>
         },
         {
           path:"orderReview",
-          element:<OrderReview></OrderReview>
+          element:<PrivateRoute><OrderReview></OrderReview></PrivateRoute>
         },
         {
           path: "login",
