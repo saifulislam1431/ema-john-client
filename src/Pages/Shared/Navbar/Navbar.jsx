@@ -17,6 +17,7 @@ const Navbar = () => {
           icon: 'success',
           confirmButtonText: 'Cool'
         })
+        localStorage.removeItem('user-token')
   })
   .catch(error=>{
       console.log(error);

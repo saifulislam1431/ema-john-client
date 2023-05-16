@@ -41,8 +41,10 @@ const Auth = ({children}) => {
                 })
                 .then(res=>res.json())
                 .then(data=>{
-                    localStorage.setItem('user-token' , data)
+                    localStorage.setItem('user-token' , data.token)
+                    // console.log("token", data);
                 })
+                
             }
            
         })
