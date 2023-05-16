@@ -30,7 +30,7 @@ const Navbar = () => {
       <NavLink to="/shop" className={({ isActive }) => (isActive ? "active" : "default")}>Shop</NavLink>
     </li>
     <li>
-      <NavLink to="/order" className={({ isActive }) => (isActive ? "active" : "default")}>Order</NavLink>
+      <NavLink to="/cart" className={({ isActive }) => (isActive ? "active" : "default")}>Cart</NavLink>
     </li>
     <li>
       <NavLink to="/orderReview" className={({ isActive }) => (isActive ? "active" : "default")}>Order Review</NavLink>
