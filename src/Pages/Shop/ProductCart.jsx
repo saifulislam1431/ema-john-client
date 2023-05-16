@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Rating from 'react-rating';
 import { FaStar } from "react-icons/fa";
 import { UserContext } from '../../Auth/Auth';
+import Swal from 'sweetalert2';
 
 const ProductCart = ({product}) => {
     // console.log(product);
@@ -15,12 +16,32 @@ const ProductCart = ({product}) => {
             userEmail: user?.email,
             shipping,
         }
-        console.log(cart);
+        // console.log(cart);
+        fetch("http://localhost:5000/cartProducts",{
+            method:"POST",
+            headers:{
+                "content-type" : "application/json"
+            },
+            body: JSON.stringify(cart)
+
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            // console.log(data);
+            if(data.insertedId){   
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Added in cart!',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                  })
+            }
+        })
 
     }
     return (
         <section>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl">
+            <div className="card card-compact w-80 bg-base-100 shadow-xl">
   <figure><img src={img} alt="Product Image" /></figure>
   <div className="card-body">
     <div className='h-14'>
