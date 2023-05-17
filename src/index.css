@@ -20,3 +20,6 @@
 .myBtn{
   @apply bg-secondary w-full lg:w-80 py-2 bg-opacity-50 rounded-md my-4 font-semibold
 }
+.selected{
+  @apply bg-primary text-white
+}
